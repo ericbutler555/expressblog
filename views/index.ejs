@@ -1,0 +1,29 @@
+<% include partials/top %>
+
+<div class="ui main text container top attached segment">
+  <h1 class="ui huge header">All Posts</h1>
+</div>
+<div class="ui main text container bottom attached segment">
+  <div class="ui divided items">
+
+<% blogs.forEach(function(blog){ %>
+
+    <div class="blog item">
+      <div class="ui small image">
+        <a href="/blogs/<%= blog._id %>"><img class="ui rounded image" src="<%= blog.image %>"></a>
+      </div>
+      <div class="content">
+        <p class="meta"><small><%= blog.created.toDateString() %></small></p>
+        <h3 class="ui medium header" style="margin-bottom:10px"><a href="/blogs/<%= blog._id %>"><%= blog.title %></a></h3>
+        <p>
+          <%= (blog.body.length > 80) ? blog.body.slice(0, 77) + '...' : blog.body %>
+        </p>
+      </div>
+    </div>
+
+<% }); // end forEach %>
+
+  </div>
+</div>
+
+<% include partials/bottom %>

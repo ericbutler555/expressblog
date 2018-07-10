@@ -1,0 +1,19 @@
+<% include partials/top %>
+
+<div class="ui main text container top attached segment">
+  <h1 class="ui huge header"><%= blog.title %></h1>
+</div>
+<div class="ui main text container attached segment">
+  <p><small>Posted <%= blog.created.toDateString() %></small></p>
+  <p><img class="ui rounded image" src="<%= blog.image %>"></p>
+  <p><%- blog.body %></p>
+</div>
+<div class="ui main text container bottom attached segment" style="overflow:auto">
+  <a class="ui basic button" href="/blogs"><i class="arrow alternate circle left outline icon"></i>All Blogs</a>
+  <form action="/blogs/<%= blog._id %>?_method=delete" method="post" style="display:inline">
+    <input class="ui right floated brown button" type="submit" value="Delete">
+  </form>
+  <a class="ui right floated teal button" href="/blogs/<%= blog._id %>/edit">Edit</a>
+</div>
+
+<% include partials/bottom %>
